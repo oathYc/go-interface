@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option go_package = "ihtest/grpcser";
+
+package serprotoc;
+
+import "packet.proto";
+
+// The greeter service definition.
+service MedTestSer {
+  // Sends a greeting
+  rpc  GetMedChanList (MedTest.MedChanListReq) returns (MedTest.MedChanListRes) {}
+}

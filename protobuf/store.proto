@@ -1,0 +1,13 @@
+syntax="proto3";
+
+option go_package = "ihtest/grpcser";
+
+package StoreGRPCSer;
+
+import "packet.proto";
+
+// 定义Store grpc服务
+service StoreSer {
+    // 定义一个接口
+    rpc GetStoreList (MedTest.StoreListReq) returns (MedTest.StoreListRes) {}
+}

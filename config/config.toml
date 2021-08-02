@@ -1,0 +1,28 @@
+# 日志
+[log]
+# 路径
+dir = "/var/log/medlinker-test/med-ih-test"
+# 分类
+category = "service"
+# 日志级别
+level = "info"
+# 是否打印到控制台
+std_print = false
+
+
+[service]
+local_http_addr = "0.0.0.0:9114"
+#med_test_addr = "127.0.0.1:13001"
+med_test_addr = "127.0.0.1:5090"
+med_test_store_addr = "127.0.0.1:13001"
+
+[redis]
+    [redis.pool]
+        [redis.pool.default]
+            address = "127.0.0.1:6379"
+            dialpassword = ""
+            db = 1
+            maxidle = 10
+            maxactive = 10
+            idletimeout = 10
+            wait = true

@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+// package MedTest;
+
+option go_package =  "ihtest/protocol";
+
+package MedTest;
+
+message BaseRequest {
+    uint32  start = 1;
+    uint32  limit = 2;
+
+    // 排序：sort=otc_type,-created_at,*custom
+    // 以符号开头，可选符号：(+或空 正序）（- 倒序）（* 自定义复杂排序标识关键词）
+    repeated string  sorts = 3;
+}
+
+message MedChanListReq_Filter {
+    // ID
+    int32   id = 1;
+    // 更新时间
+    int64   modify_time  = 2;
+}
+
+message MedChanListReq {
+    BaseRequest base_request = 1;
+    // 过滤器
+    MedChanListReq_Filter filter = 2;
+}
+
+message MedChan {
+    uint32  id = 1;
+    string  title = 2;
+    uint32  is_self = 3;
+    string  remark  = 4;
+    int32   channel_status = 5;
+    uint32  store_count = 6;
+    int64   created_at  =   7;
+    int64   updated_at  =   8;
+    int64   deleted_at  =   9;
+}
+
+message MedChanListRes {
+    repeated MedChan    list    =   1;
+}
+
+message StoreListReq_Filter {
+    // ID
+    uint32   id = 1;
+    int32   channel_id = 2;
+    // 更新时间
+    string   title  = 3;
+    string   cellphone = 4;
+}
+
+message StoreListReq {
+    BaseRequest base_request = 1;
+    // 过滤器
+    StoreListReq_Filter filter = 2;
+}
+
+message Store {
+    uint32  id = 1;
+    int32   channel_id = 2;
+    string  title = 3;
+    string  address = 4;
+    string  cellphone   = 5;
+    string  creator_name    = 6;
+    int32   store_status    =   7;
+    int64   created_at  =   8;
+    int64   updated_at  =   9;
+    int64   deleted_at  =   10;
+}
+
+message StoreListRes {
+    repeated Store  list    =   1;
+}
